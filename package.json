@@ -1,0 +1,24 @@
+{
+  "name": "node-4-express-dynamic-r",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MariusCodeAcademy/NODE-4-express-dynamic-r.git"
+  },
+  "author": "M.K.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MariusCodeAcademy/NODE-4-express-dynamic-r/issues"
+  },
+  "homepage": "https://github.com/MariusCodeAcademy/NODE-4-express-dynamic-r#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "morgan": "^1.10.0"
+  }
+}
