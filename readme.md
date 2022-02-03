@@ -29,3 +29,5 @@
    // PVZ /api/people/income/below/1500
 
 10. GET /api/people/married (grazinam vedusius zmones)
+
+11. GET /api/people/names (grazinam zmoniu vardus ir pavardes)

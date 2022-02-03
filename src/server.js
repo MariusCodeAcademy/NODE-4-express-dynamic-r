@@ -34,7 +34,7 @@ app.get('/api/people/:personId', (req, res) => {
   console.log('req ===', req.params.personId);
   const { personId } = req.params;
   // surasti people masyve objekta kurio id === 1
-  const found = people.find((person) => person.sex === Number(personId));
+  const found = people.find((person) => person.id === Number(personId));
   console.log('found ===', found);
   if (found) {
     // radom
