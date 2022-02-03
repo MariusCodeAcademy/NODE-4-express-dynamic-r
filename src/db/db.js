@@ -7,6 +7,7 @@ const people = [
     income: 1200,
     married: false,
     hasCar: false,
+    id: 1,
   },
   {
     name: 'Severija',
@@ -16,6 +17,7 @@ const people = [
     income: 1300,
     married: false,
     hasCar: true,
+    id: 2,
   },
   {
     name: 'Valdas',
@@ -25,6 +27,7 @@ const people = [
     income: 0,
     married: false,
     hasCar: false,
+    id: 3,
   },
   {
     name: 'Virginijus',
@@ -34,6 +37,7 @@ const people = [
     income: 2400,
     married: true,
     hasCar: true,
+    id: 4,
   },
   {
     name: 'Samanta',
@@ -43,6 +47,7 @@ const people = [
     income: 1200,
     married: true,
     hasCar: true,
+    id: 5,
   },
   {
     name: 'Janina',
@@ -52,6 +57,7 @@ const people = [
     income: 364,
     married: false,
     hasCar: false,
+    id: 6,
   },
 ];
 const numbers = [1, 15, 9, -9, -8, -7, 2, 8, 51, 6, 5];
