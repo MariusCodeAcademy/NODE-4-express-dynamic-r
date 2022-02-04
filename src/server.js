@@ -7,7 +7,6 @@ const PORT = 3000;
 
 // data
 const db = require('./db/db');
-const { all } = require('express/lib/application');
 
 // const people = db.people;
 // const numbers = db.numbers;
@@ -18,38 +17,15 @@ const { people, numbers } = db;
 app.use(morgan('dev'));
 
 // Routes
-// GET /api/people (grazina visus zmones json masyvo formatu)
-app.get('/api/people', (req, res) => {
+const peopleRoutes = require('./api/people');
+app.use('/', peopleRoutes);
+// GET /api/numbers (grazina visus numbers json masyvo formatu)
+app.get('/api/numbers', (req, res) => {
   const rez = {
     msg: 'success',
-    data: people,
+    data: numbers,
   };
-
   res.json(rez);
-});
-// GET /api/numbers (grazina visus numbers json masyvo formatu)
-
-// GET /api/people/1 (grazina visus zmogu kurio id 1)
-// GET /api/people/:personId (dinamini kelia kur kas parasyto po people/ bus priskirta personId kintamajam  )
-app.get('/api/people/:personId', (req, res) => {
-  console.log('req ===', req.params.personId);
-  const { personId } = req.params;
-  // surasti people masyve objekta kurio id === 1
-  const found = people.find((person) => person.id === Number(personId));
-  console.log('found ===', found);
-  if (found) {
-    // radom
-    res.json({
-      msg: 'success',
-      data: found,
-    });
-  } else {
-    // neradom
-    res.status(400).json({
-      msg: 'not found',
-      error: `user with id ${personId} was not found`,
-    });
-  }
 });
 
 // GET /api/people/male (grazinam visus vyrus)
@@ -82,9 +58,16 @@ app.get('/api/people/income/avg', (req, res) => {
   // });
   // const avg = total / arr.length;
   const avg = people.reduce((total, person, idx, allArr) => {
-    const currentTotal = total + person.income / allArr.length;
+    const currentAvg = person.income / allArr.length;
+    const currentTotal = total + currentAvg;
     return currentTotal;
   }, 0);
+
+  // sutrumpintai
+  // const avg = people.reduce(
+  //   (total, person, idx, allArr) => total + person.income / allArr.length,
+  //   0
+  // );
 
   console.log('avg ===', avg);
 
