@@ -6,14 +6,6 @@ const morgan = require('morgan');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// data
-const db = require('./db/db');
-
-// const people = db.people;
-// const numbers = db.numbers;
-
-const { people } = db;
-
 // MiddleWare
 app.use(morgan('dev'));
 
@@ -41,37 +33,6 @@ app.use('/', peopleRoutes);
 // GET /api/people/over30 (grazinam zmones kuriu amzius daugiau nei 30)
 
 // GET /api/people/over/:age (grazinam zmones kuriu amzius daugiau nei :age)
-
-// GET /api/people/income/avg (grazinam zmoniu atlyginimu vidurki)
-app.get('/api/people/income/avg', (req, res) => {
-  // suskaiciuoti vid
-  // [1, 2, 3]
-  // [1/3 + 2/3 + 3/3 ]
-  // const arr = people.map((person) => person.income);
-  // let total = 0;
-  // arr.forEach((el) => {
-  //   total = total + el;
-  // });
-  // const avg = total / arr.length;
-  const avg = people.reduce((total, person, idx, allArr) => {
-    const currentAvg = person.income / allArr.length;
-    const currentTotal = total + currentAvg;
-    return currentTotal;
-  }, 0);
-
-  // sutrumpintai
-  // const avg = people.reduce(
-  //   (total, person, idx, allArr) => total + person.income / allArr.length,
-  //   0
-  // );
-
-  console.log('avg ===', avg);
-
-  res.json({
-    msg: 'success',
-    data: avg.toFixed(2),
-  });
-});
 
 // GET /api/people/income/below/:salary (grazinam zmoniu masyva kurie uzdirba maziau nei :salary)
 //PVZ /api/people/income/below/1500
