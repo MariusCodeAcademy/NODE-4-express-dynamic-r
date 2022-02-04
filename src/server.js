@@ -7,6 +7,7 @@ const PORT = 3000;
 
 // data
 const db = require('./db/db');
+const { all } = require('express/lib/application');
 
 // const people = db.people;
 // const numbers = db.numbers;
@@ -70,6 +71,28 @@ app.get('/api/people/:personId', (req, res) => {
 // GET /api/people/over/:age (grazinam zmones kuriu amzius daugiau nei :age)
 
 // GET /api/people/income/avg (grazinam zmoniu atlyginimu vidurki)
+app.get('/api/people/income/avg', (req, res) => {
+  // suskaiciuoti vid
+  // [1, 2, 3]
+  // [1/3 + 2/3 + 3/3 ]
+  // const arr = people.map((person) => person.income);
+  // let total = 0;
+  // arr.forEach((el) => {
+  //   total = total + el;
+  // });
+  // const avg = total / arr.length;
+  const avg = people.reduce((total, person, idx, allArr) => {
+    const currentTotal = total + person.income / allArr.length;
+    return currentTotal;
+  }, 0);
+
+  console.log('avg ===', avg);
+
+  res.json({
+    msg: 'success',
+    data: avg.toFixed(2),
+  });
+});
 
 // GET /api/people/income/below/:salary (grazinam zmoniu masyva kurie uzdirba maziau nei :salary)
 //PVZ /api/people/income/below/1500
