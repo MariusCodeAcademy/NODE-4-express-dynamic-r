@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors');
+// const cors = require('cors');
 const morgan = require('morgan');
 
 const app = express();
@@ -11,22 +11,17 @@ const db = require('./db/db');
 // const people = db.people;
 // const numbers = db.numbers;
 
-const { people, numbers } = db;
+const { people } = db;
 
 // MiddleWare
 app.use(morgan('dev'));
 
 // Routes
 const peopleRoutes = require('./api/people');
+const numbersRoutes = require('./api/numbers');
+
+app.use('/', numbersRoutes);
 app.use('/', peopleRoutes);
-// GET /api/numbers (grazina visus numbers json masyvo formatu)
-app.get('/api/numbers', (req, res) => {
-  const rez = {
-    msg: 'success',
-    data: numbers,
-  };
-  res.json(rez);
-});
 
 // GET /api/people/male (grazinam visus vyrus)
 // 1. sukuriam endpoint

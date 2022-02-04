@@ -67,13 +67,13 @@ module.exports = {
   numbers,
 };
 
-const peopleWithId = people.map((person, idx) => {
-  // pakeisdami orginalo objekto
-  // person.id = idx + 1;
-  // return person;
-  // nepakeisdami orginalo objekto
-  return {
-    id: idx + 1,
-    ...person,
-  };
-});
+// const peopleWithId = people.map((person, idx) => {
+//   // pakeisdami orginalo objekto
+//   // person.id = idx + 1;
+//   // return person;
+//   // nepakeisdami orginalo objekto
+//   return {
+//     id: idx + 1,
+//     ...person,
+//   };
+// });
